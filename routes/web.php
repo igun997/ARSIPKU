@@ -24,7 +24,7 @@ Route::group(['middleware' => ['super_admin']], function () {
   Route::get("/super","SuperControl@index")->name("super");
   //Jenis
   Route::get("/super/jenis","SuperControl@jenis_read")->name("super.jenis");
-  Route::get("/super/api/jenis","SuperControl@api_jenisread")->name("super.api.jenis");
+  Route::get("/super/api/jenis","MainControl@api_jenisread")->name("super.api.jenis");
   Route::get("/super/jenis/add","SuperControl@jenis_add")->name("super.jenis.add");
   Route::post("/super/jenis/add","SuperControl@jenis_add_action")->name("super.jenis.add");
   Route::get("/super/jenis/detail/{id?}","SuperControl@jenis_show")->name("super.jenis.update");

@@ -29,4 +29,14 @@ class MainControl extends Controller
         return back()->withErrors(["msg"=>"Username dan Password anda Salah"]);
       }
     }
+    public function api_jenisread()
+    {
+      $get = Jeni::all();
+      $data = [];
+      $data["data"] = [];
+      foreach ($get as $key => $value) {
+        $data["data"][]= [($key+1),$value->kode_jenis,$value->nama_jenis,$value->id];
+      }
+      return $data;
+    }
 }

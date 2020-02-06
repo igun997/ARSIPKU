@@ -17,7 +17,7 @@ class CreateJenisTable extends Migration {
 			$table->integer('id', true);
 			$table->string('nama_jenis', 100);
 			$table->string('kode_jenis', 20)->nullable();
-			$table->integer('jenis_id')->index('jenis_id');
+			$table->integer('jenis_id')->nullable()->index('jenis_id');
 		});
 	}
 

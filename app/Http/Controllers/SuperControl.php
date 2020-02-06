@@ -17,16 +17,7 @@ class SuperControl extends Controller
       return view("superadmin.jenis")->with(["title"=>"Data Jenis Arsip"]);
 
     }
-    public function api_jenisread()
-    {
-      $get = Jeni::all();
-      $data = [];
-      $data["data"] = [];
-      foreach ($get as $key => $value) {
-        $data["data"][]= [($key+1),$value->kode_jenis,$value->nama_jenis,$value->id];
-      }
-      return $data;
-    }
+    
     public function jenis_add()
     {
       return view("superadmin.jenis_form")->with(["title"=>"Data Jenis","action"=>route("super.jenis.add")]);
