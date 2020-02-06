@@ -38,10 +38,39 @@
 </li> -->
 
 @if(session()->get("level") == "super_admin")
+<li class="nav-item">
+  <a href="{{route("super")}}" class="nav-link">
+    <i class="nav-icon fas fa-home"></i>
+    <p>Beranda</p>
+  </a>
+</li>
+<li class="nav-item has-treeview">
+  <a href="#" class="nav-link">
+    <i class="nav-icon fas fa-file"></i>
+    <p>
+      Data Master
+      <i class="right fas fa-angle-left"></i>
+    </p>
+  </a>
+  <ul class="nav nav-treeview">
+    <li class="nav-item">
+      <a href="{{route("super.jenis")}}" class="nav-link">
+        <i class="far fa-circle nav-icon"></i>
+        <p>Jenis Arsip</p>
+      </a>
+    </li>
+  </ul>
+</li>
+<li class="nav-item">
+  <a href="{{route("logout")}}" class="nav-link">
+    <i class="nav-icon fas fa-sign-out-alt"></i>
+    <p>Logout</p>
+  </a>
+</li>
 @elseif(in_array(session()->get("level"),['tata_usaha','kepala_sekolah','guru','wakil_kepala_sekolah','staff_lain']))
 @else
 <li class="nav-item">
-  <a href="../widgets.html" class="nav-link">
+  <a href="{{route("login")}}" class="nav-link">
     <i class="nav-icon fas fa-sign-in-alt"></i>
     <p>Login</p>
   </a>

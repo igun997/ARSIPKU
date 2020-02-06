@@ -16,6 +16,7 @@
   <!-- Google Font: Source Sans Pro -->
   <link href="//fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
   <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css">
+  <link rel="stylesheet" href="{{url("assets/plugins/datatables-bs4/css/dataTables.bootstrap4.css")}}">
   @yield("css")
 </head>
 <body class="hold-transition sidebar-mini">
@@ -39,7 +40,7 @@
   <aside class="main-sidebar sidebar-dark-primary elevation-4">
     <!-- Brand Logo -->
     <a href="assets/index3.html" class="brand-link">
-      <img src="assets/dist/img/AdminLTELogo.png"
+      <img src="{{url("assets/img/logo.jpg")}}"
            alt="Arsipku"
            class="brand-image img-circle">
       <span class="brand-text font-weight-light">ARSIPKU</span>
@@ -107,6 +108,9 @@
 <!-- AdminLTE for demo purposes -->
 <script src="{{url("assets/dist/js/demo.js")}}"></script>
 <script src="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js" charset="utf-8"></script>
+
+<script src="{{url("assets/plugins/datatables/jquery.dataTables.js")}}"></script>
+<script src="{{url("assets/plugins/datatables-bs4/js/dataTables.bootstrap4.js")}}"></script>
 @include("msg")
 @yield("js")
 </body>

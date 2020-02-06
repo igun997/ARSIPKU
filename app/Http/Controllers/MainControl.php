@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use \App\Models\{Arsip,ArsipDisposisi,ArsipLock,Jeni,User};
-use \Creativeorange\Gravatar\Facades\Gravatar;
 class MainControl extends Controller
 {
     public function login()
