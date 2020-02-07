@@ -98,9 +98,9 @@
   <!-- /.control-sidebar -->
 </div>
 <!-- ./wrapper -->
-
 <!-- jQuery -->
 <script src="{{url("assets/plugins/jquery/jquery.min.js")}}"></script>
+
 <!-- Bootstrap 4 -->
 <script src="{{url("assets/plugins/bootstrap/js/bootstrap.bundle.min.js")}}"></script>
 <!-- AdminLTE App -->
@@ -113,5 +113,14 @@
 <script src="{{url("assets/plugins/datatables-bs4/js/dataTables.bootstrap4.js")}}"></script>
 @include("msg")
 @yield("js")
+<script src="https://cdn.onesignal.com/sdks/OneSignalSDK.js" async=""></script>
+<script>
+  var OneSignal = window.OneSignal || [];
+  OneSignal.push(function() {
+    OneSignal.init({
+      appId: "6f07329e-80ec-480b-b37d-1fa290dd1420",
+    });
+  });
+</script>
 </body>
 </html>
