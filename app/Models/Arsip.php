@@ -16,6 +16,7 @@ use Illuminate\Database\Eloquent\Model;
  * @property string $judul_surat
  * @property int $jenis_id
  * @property string $file_surat
+ * @property string $file_surat_pdf
  * @property int $users_id
  *
  * @property Jeni $jeni
@@ -42,6 +43,7 @@ class Arsip extends Model
 		'judul_surat',
 		'jenis_id',
 		'file_surat',
+		'file_surat_pdf',
 		'users_id'
 	];
 
