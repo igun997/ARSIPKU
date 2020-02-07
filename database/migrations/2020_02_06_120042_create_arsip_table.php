@@ -18,6 +18,7 @@ class CreateArsipTable extends Migration {
 			$table->string('judul_surat', 150);
 			$table->integer('jenis_id')->index('jenis');
 			$table->string('file_surat', 100);
+			$table->string('file_surat_pdf', 100);
 			$table->integer('users_id')->index('sud');
 		});
 	}
