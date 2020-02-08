@@ -27,6 +27,7 @@ class AppServiceProvider extends ServiceProvider
            $this->app->register(\Sven\ArtisanView\ServiceProvider::class);
            $this->app->register(\Way\Generators\GeneratorsServiceProvider::class);
            $this->app->register(\Xethron\MigrationsGenerator\MigrationsGeneratorServiceProvider::class);
+           $this->app->register(\Orangehill\Iseed\IseedServiceProvider::class);
        }
     }
 }
