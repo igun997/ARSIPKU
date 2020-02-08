@@ -30,4 +30,19 @@ Route::group(['middleware' => ['super_admin']], function () {
   Route::get("/super/jenis/detail/{id?}","SuperControl@jenis_show")->name("super.jenis.update");
   Route::post("/super/jenis/detail/{id?}","SuperControl@jenis_update")->name("super.jenis.update");
   Route::get("/super/jenis/delete/{id?}","SuperControl@jenis_delete")->name("super.jenis.delete");
+
+  Route::get("/super/suratkeluar","SuperControl@suratkeluar_read")->name("super.suratkeluar");
+  Route::get("/super/api/suratkeluar","MainControl@api_suratkeluarread")->name("super.api.suratkeluar");
+  Route::get("/super/suratkeluar/add","SuperControl@suratkeluar_add")->name("super.suratkeluar.add");
+  Route::get("/super/api/suratkeluar/jenis/list/{id?}","MainControl@api_jenisread")->name("super.api.suratkeluar.jenis.list");
+
+  Route::get("/super/api/suratkeluar/get/jenis/{id?}","MainControl@api_jenisgetfirst")->name("super.api.suratkeluar.jenis.get");
+  Route::get("/super/api/suratkeluar/count/jenis","MainControl@api_countsurat")->name("super.api.suratkeluar.api_countsurat");
+  Route::post("/super/suratkeluar/add","MainControl@suratkeluar_add")->name("super.suratkeluar.add");
+
+  Route::get("/super/suratkeluar/dword","MainControl@dword")->name("super.suratkeluar.word.download");
+  Route::get("/super/suratkeluar/dpdf","MainControl@dpdf")->name("super.suratkeluar.pdf.generate");
+  Route::get("/super/suratkeluar/detail/{id?}","SuperControl@suratkeluar_show")->name("super.suratkeluar.update");
+  Route::post("/super/suratkeluar/detail/{id?}","SuperControl@suratkeluar_update")->name("super.suratkeluar.update");
+  Route::get("/super/suratkeluar/delete/{id?}","SuperControl@suratkeluar_delete")->name("super.suratkeluar.delete");
 });

@@ -37,6 +37,9 @@ class Arsip extends Model
 		'jenis_id' => 'int',
 		'users_id' => 'int'
 	];
+	protected $dates = [
+		"dibuat"
+	];
 
 	protected $fillable = [
 		'kode_surat',
@@ -44,6 +47,8 @@ class Arsip extends Model
 		'jenis_id',
 		'file_surat',
 		'file_surat_pdf',
+		'catatan',
+		'dibuat',
 		'users_id'
 	];
 

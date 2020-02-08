@@ -20,6 +20,8 @@ class CreateArsipTable extends Migration {
 			$table->string('file_surat', 100);
 			$table->string('file_surat_pdf', 100);
 			$table->integer('users_id')->index('sud');
+			$table->text('catatan', 65535)->nullable();
+			$table->timestamp('dibuat')->default(DB::raw('CURRENT_TIMESTAMP'));
 		});
 	}
 

@@ -17,7 +17,7 @@ class SuperControl extends Controller
       return view("superadmin.jenis")->with(["title"=>"Data Jenis Arsip"]);
 
     }
-    
+
     public function jenis_add()
     {
       return view("superadmin.jenis_form")->with(["title"=>"Data Jenis","action"=>route("super.jenis.add")]);
@@ -64,5 +64,15 @@ class SuperControl extends Controller
       }else {
         return back()->withErrors(["msg"=>"Koneksi Dengan Database Terputus"]);
       }
+    }
+    public function suratkeluar_read()
+    {
+      $data = ["title"=>"Data Surat Keluar"];
+      return view("superadmin.suratkeluar")->with($data);
+    }
+    public function suratkeluar_add()
+    {
+      $data = ["title"=>"Tambah Surat Keluar","action"=>route("super.suratkeluar.add")];
+      return view("superadmin.suratkeluar_form")->with($data);
     }
 }

@@ -23,7 +23,7 @@ class CreateUsersTable extends Migration {
 			$table->string('password', 100);
 			$table->integer('status')->default(1);
 			$table->enum('level', array('super_admin','tata_usaha','kepala_sekolah','guru','wakil_kepala_sekolah','staff_lain'));
-			$table->text('isLogin')->nullable();
+			$table->text('isLogin', 65535)->nullable();
 			$table->timestamp('tgl_register')->default(DB::raw('CURRENT_TIMESTAMP'));
 		});
 	}

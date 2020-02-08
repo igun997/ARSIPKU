@@ -16,7 +16,10 @@
         "laravel/framework": "^5.8.0",
         "laravel/tinker": "^1.0",
         "marcelo-correa/laravel-create-database": "^1.0",
-        "reliese/laravel": "^0.0.14"
+        "reliese/laravel": "^0.0.14",
+        "setasign/fpdf": "^1.8",
+        "setasign/fpdi": "^2.2",
+        "simplesoftwareio/simple-qrcode": "^2.0"
     },
     "require-dev": {
         "filp/whoops": "^2.0",
