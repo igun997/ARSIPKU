@@ -31,6 +31,14 @@ Route::group(['middleware' => ['super_admin']], function () {
   Route::post("/super/jenis/detail/{id?}","SuperControl@jenis_update")->name("super.jenis.update");
   Route::get("/super/jenis/delete/{id?}","SuperControl@jenis_delete")->name("super.jenis.delete");
 
+  Route::get("/super/akun","SuperControl@akun_read")->name("super.akun");
+  Route::get("/super/api/akun","MainControl@api_akunread")->name("super.api.akun");
+  Route::get("/super/akun/add","SuperControl@akun_add")->name("super.akun.add");
+  Route::post("/super/akun/add","SuperControl@akun_add_action")->name("super.akun.add");
+  Route::get("/super/akun/detail/{id?}","SuperControl@akun_show")->name("super.akun.update");
+  Route::post("/super/akun/detail/{id?}","SuperControl@akun_update")->name("super.akun.update");
+  Route::get("/super/akun/delete/{id?}","SuperControl@akun_delete")->name("super.akun.delete");
+
   Route::get("/super/suratkeluar","SuperControl@suratkeluar_read")->name("super.suratkeluar");
   Route::get("/super/api/suratkeluar","MainControl@api_suratkeluarread")->name("super.api.suratkeluar");
   Route::get("/super/suratkeluar/add","SuperControl@suratkeluar_add")->name("super.suratkeluar.add");

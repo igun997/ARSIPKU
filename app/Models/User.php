@@ -12,7 +12,7 @@ use Illuminate\Database\Eloquent\Model;
 
 /**
  * Class User
- * 
+ *
  * @property int $id
  * @property string $nama
  * @property string $alamat
@@ -24,7 +24,7 @@ use Illuminate\Database\Eloquent\Model;
  * @property string $level
  * @property string $isLogin
  * @property Carbon $tgl_register
- * 
+ *
  * @property Collection|Arsip[] $arsips
  * @property Collection|ArsipDisposisi[] $arsip_disposisis
  *
@@ -53,6 +53,7 @@ class User extends Model
 		'no_hp',
 		'email',
 		'username',
+		'inisial_surat',
 		'password',
 		'status',
 		'level',

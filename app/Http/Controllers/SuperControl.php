@@ -18,6 +18,31 @@ class SuperControl extends Controller
 
     }
 
+    public function akun_read()
+    {
+      return view("superadmin.akun")->with(["title"=>"Data Akun"]);
+    }
+    public function akun_add()
+    {
+      return view("superadmin.akun_form")->with(["title"=>"Tambah Akun","action"=>route("super.akun.add")]);
+    }
+    public function akun_add_action(Request $req)
+    {
+      $req->validate([
+        "inisial_surat"=>"unique:users|required",
+        "nama"=>"required",
+        "username"=>"unique:users|required",
+        "password"=>"required",
+        "email"=>"required",
+      ]);
+      $ins = User::create($req->all());
+      if ($ins) {
+        return back()->with(["msg"=>"Data Tersimpan"]);
+      }else {
+        return back()->withErrors(["msg"=>"Data Gagal Tersimpan"]);
+      }
+
+    }
     public function jenis_add()
     {
       return view("superadmin.jenis_form")->with(["title"=>"Data Jenis","action"=>route("super.jenis.add")]);

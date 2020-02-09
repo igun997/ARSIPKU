@@ -46,6 +46,19 @@ class MainControl extends Controller
       }
       return $data;
     }
+    public function api_akunread($isList = 0)
+    {
+      $get = User::all();
+      if ($isList == 1) {
+        return $get;
+      }
+      $data = [];
+      $data["data"] = [];
+      foreach ($get as $key => $value) {
+        $data["data"][]= [($key+1),$value->nama,$value->no_hp,$value->email,$value->username,$value->level,$value->inisial_surat,$value->tgl_register->format("d/mY"),$value->id];
+      }
+      return $data;
+    }
     public function api_jenisgetfirst($id)
     {
       $data = Jeni::where(["id"=>$id])->first();

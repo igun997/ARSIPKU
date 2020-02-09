@@ -59,6 +59,12 @@
         <p>Jenis Arsip</p>
       </a>
     </li>
+    <li class="nav-item">
+      <a href="{{route("super.akun")}}" class="nav-link">
+        <i class="far fa-circle nav-icon"></i>
+        <p>Data Akun</p>
+      </a>
+    </li>
   </ul>
 </li>
 <li class="nav-item">
