@@ -65,10 +65,16 @@
       console.log(id);
       location.href = "{{route("super.suratkeluar.word.download")}}?id="+id;
     })
+
     $("#dtable").on("click", ".dpdf", function(event) {
       id = $(this).data("id");
       console.log(id);
       location.href = "{{route("super.suratkeluar.pdf.generate")}}?id="+id;
+    })
+    $("#dtable").on("click", ".detail", function(event) {
+      id = $(this).data("id");
+      console.log(id);
+      location.href = "{{route("super.suratkeluar.detail")}}?id="+id;
     })
     $("#dtable").on("click", ".pdisposisi", function(event) {
       id = $(this).data("id");

@@ -177,5 +177,15 @@ class MainControl extends Controller
         return back()->withErrors(["msg"=>"Data Tidak Ditemukan"]);
       }
     }
+    public function suratkeluar_detail(Request $req)
+    {
+      $data = Arsip::where(["kode_surat"=>$req->id]);
+      if ($data->count() > 0) {
+        $row = $data->first();
+        return view("superadmin.suratkeluar_detail")->with(["title"=>"Detail Data Disposisi","data"=>$row]);
+      }else {
+        return back()->withErrors(["msg"=>"Data Tidak Ditemukan"]);
+      }
+    }
 
 }

@@ -48,6 +48,7 @@ Route::group(['middleware' => ['super_admin']], function () {
   Route::get("/super/jenis/delete/{id?}","SuperControl@jenis_delete")->name("super.jenis.delete");
 
   Route::post("/super/api/suratkeluar/api_disposisi","SuperControl@api_disposisi")->name("super.api.suratkeluar.disposisi.insert");
+  Route::get("/super/suratkeluar/disposisi/detail","MainControl@suratkeluar_detail")->name("super.suratkeluar.detail");
 
 
   Route::get("/super/akun","SuperControl@akun_read")->name("super.akun");
