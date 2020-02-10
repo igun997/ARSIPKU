@@ -86,6 +86,30 @@
   </a>
 </li>
 @elseif(in_array(session()->get("level"),['tata_usaha','kepala_sekolah','guru','wakil_kepala_sekolah','staff_lain']))
+<li class="nav-item">
+  <a href="{{route("staff")}}" class="nav-link">
+    <i class="nav-icon fas fa-home"></i>
+    <p>Beranda</p>
+  </a>
+</li>
+<li class="nav-item">
+  <a href="{{route("staff.suratkeluar")}}" class="nav-link">
+    <i class="nav-icon fas fa-file"></i>
+    <p>Arsip Keluar</p>
+  </a>
+</li>
+<li class="nav-item">
+  <a href="{{route("staff.suratkeluar")}}" class="nav-link">
+    <i class="nav-icon fas fa-file"></i>
+    <p>Arsip Di Tandatangani</p>
+  </a>
+</li>
+<li class="nav-item">
+  <a href="{{route("logout")}}" class="nav-link">
+    <i class="nav-icon fas fa-sign-out-alt"></i>
+    <p>Logout</p>
+  </a>
+</li>
 @else
 <li class="nav-item">
   <a href="{{route("login")}}" class="nav-link">

@@ -13,6 +13,7 @@
   <link rel="stylesheet" href="//code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
   <!-- overlayScrollbars -->
   <link rel="stylesheet" href="{{url("assets/dist/css/adminlte.min.css")}}">
+  <meta name="csrf-token" content="{{ csrf_token() }}">
   <!-- Google Font: Source Sans Pro -->
   <link href="//fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
   <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css">
@@ -111,6 +112,13 @@
 
 <script src="{{url("assets/plugins/datatables/jquery.dataTables.js")}}"></script>
 <script src="{{url("assets/plugins/datatables-bs4/js/dataTables.bootstrap4.js")}}"></script>
+<script type="text/javascript">
+$.ajaxSetup({
+    headers: {
+        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+    }
+});
+</script>
 @include("msg")
 @yield("js")
 <script src="https://cdn.onesignal.com/sdks/OneSignalSDK.js" async=""></script>

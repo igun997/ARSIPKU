@@ -19,7 +19,23 @@ Route::get("/logout",function(){
 })->name("logout");
 Route::get("/login","MainControl@login")->name("login");
 Route::post("/login","MainControl@login_act")->name("login_act");
+Route::group(['middleware' => ['staff_lain']], function () {
+    Route::get("/staff","StaffControl@index")->name("staff");
+    Route::get("/staff/suratkeluar","StaffControl@suratkeluar_read")->name("staff.suratkeluar");
+    Route::get("/staff/api/suratkeluar/{id?}","MainControl@api_suratkeluarread")->name("staff.api.suratkeluar");
+    Route::get("/staff/suratkeluar/add","StaffControl@suratkeluar_add")->name("staff.suratkeluar.add");
+    Route::get("/staff/api/suratkeluar/jenis/list/{id?}","MainControl@api_jenisread")->name("staff.api.suratkeluar.jenis.list");
 
+    Route::get("/staff/api/suratkeluar/get/jenis/{id?}","MainControl@api_jenisgetfirst")->name("staff.api.suratkeluar.jenis.get");
+    Route::get("/staff/api/suratkeluar/count/jenis","MainControl@api_countsurat")->name("staff.api.suratkeluar.api_countsurat");
+    Route::post("/staff/suratkeluar/add","MainControl@suratkeluar_add")->name("staff.suratkeluar.add");
+
+    Route::get("/staff/suratkeluar/dword","MainControl@dword")->name("staff.suratkeluar.word.download");
+    Route::get("/staff/suratkeluar/dpdf","MainControl@dpdf")->name("staff.suratkeluar.pdf.generate");
+    Route::get("/staff/suratkeluar/detail/{id?}","StaffControl@suratkeluar_show")->name("staff.suratkeluar.update");
+    Route::post("/staff/suratkeluar/detail/{id?}","StaffControl@suratkeluar_update")->name("staff.suratkeluar.update");
+    Route::get("/staff/suratkeluar/delete/{id?}","StaffControl@suratkeluar_delete")->name("staff.suratkeluar.delete");
+});
 Route::group(['middleware' => ['super_admin']], function () {
   Route::get("/super","SuperControl@index")->name("super");
   //Jenis
@@ -31,6 +47,9 @@ Route::group(['middleware' => ['super_admin']], function () {
   Route::post("/super/jenis/detail/{id?}","SuperControl@jenis_update")->name("super.jenis.update");
   Route::get("/super/jenis/delete/{id?}","SuperControl@jenis_delete")->name("super.jenis.delete");
 
+  Route::post("/super/api/suratkeluar/api_disposisi","SuperControl@api_disposisi")->name("super.api.suratkeluar.disposisi.insert");
+
+
   Route::get("/super/akun","SuperControl@akun_read")->name("super.akun");
   Route::get("/super/api/akun","MainControl@api_akunread")->name("super.api.akun");
   Route::get("/super/akun/add","SuperControl@akun_add")->name("super.akun.add");
@@ -40,6 +59,7 @@ Route::group(['middleware' => ['super_admin']], function () {
   Route::get("/super/akun/delete/{id?}","SuperControl@akun_delete")->name("super.akun.delete");
 
   Route::get("/super/suratkeluar","SuperControl@suratkeluar_read")->name("super.suratkeluar");
+  Route::get("/super/suratkeluar/disposisi","SuperControl@suratkeluar_disposisi")->name("super.suratkeluar.disposisi");
   Route::get("/super/api/suratkeluar","MainControl@api_suratkeluarread")->name("super.api.suratkeluar");
   Route::get("/super/suratkeluar/add","SuperControl@suratkeluar_add")->name("super.suratkeluar.add");
   Route::get("/super/api/suratkeluar/jenis/list/{id?}","MainControl@api_jenisread")->name("super.api.suratkeluar.jenis.list");
