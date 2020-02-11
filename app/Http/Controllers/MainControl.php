@@ -97,6 +97,7 @@ class MainControl extends Controller
       }
       return $data;
     }
+    
     public function suratkeluar_add(Request $req)
     {
       $req->validate([

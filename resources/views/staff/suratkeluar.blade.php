@@ -15,9 +15,9 @@
         <div class="card-header">
           <h3 class="card-title">{{$title}}</h3>
         </div>
-        <div class="card-body">
+        <div class="card-body table-responsive">
           <a href="{{route("staff.suratkeluar.add")}}" class="btn btn-primary mb-4">Tambah</a>
-          <table class="table table-responsive" id="dtable">
+          <table class="table" id="dtable">
             <thead>
               <th>No</th>
               <th>Kode</th>
@@ -59,6 +59,11 @@
         $("td",r).eq(10).html(btn(d[10]));
       }
     });
+    $("#dtable").on("click", ".detail", function(event) {
+      id = $(this).data("id");
+      console.log(id);
+      location.href = "{{route("staff.suratkeluar.detail")}}?id="+id;
+    })
     $("#dtable").on("click", ".dword", function(event) {
       id = $(this).data("id");
       console.log(id);

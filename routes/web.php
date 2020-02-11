@@ -26,6 +26,7 @@ Route::group(['middleware' => ['staff_lain']], function () {
     Route::get("/staff/suratkeluar/add","StaffControl@suratkeluar_add")->name("staff.suratkeluar.add");
     Route::get("/staff/api/suratkeluar/jenis/list/{id?}","MainControl@api_jenisread")->name("staff.api.suratkeluar.jenis.list");
 
+    Route::get("/staff/suratkeluar/disposisi/detail","MainControl@suratkeluar_detail")->name("staff.suratkeluar.detail");
     Route::get("/staff/api/suratkeluar/get/jenis/{id?}","MainControl@api_jenisgetfirst")->name("staff.api.suratkeluar.jenis.get");
     Route::get("/staff/api/suratkeluar/count/jenis","MainControl@api_countsurat")->name("staff.api.suratkeluar.api_countsurat");
     Route::post("/staff/suratkeluar/add","MainControl@suratkeluar_add")->name("staff.suratkeluar.add");
@@ -49,6 +50,9 @@ Route::group(['middleware' => ['super_admin']], function () {
 
   Route::post("/super/api/suratkeluar/api_disposisi","SuperControl@api_disposisi")->name("super.api.suratkeluar.disposisi.insert");
   Route::get("/super/suratkeluar/disposisi/detail","MainControl@suratkeluar_detail")->name("super.suratkeluar.detail");
+  Route::post("/super/suratkeluar/disposisi/lock_temp","SuperControl@lock_temp")->name("super.suratkeluar.lock_temp");
+  Route::post("/super/suratkeluar/disposisi/lock_permanent","SuperControl@lock_permanent")->name("super.suratkeluar.lock_permanent");
+  Route::post("/super/suratkeluar/disposisi/open_lock","SuperControl@open_lock")->name("super.suratkeluar.open_lock");
 
 
   Route::get("/super/akun","SuperControl@akun_read")->name("super.akun");

@@ -17,6 +17,56 @@ class SuperControl extends Controller
       return view("superadmin.jenis")->with(["title"=>"Data Jenis Arsip"]);
 
     }
+    public function lock_temp(Request $req)
+    {
+      $a = ArsipLock::where(["kode_surat"=>$req->kode_surat]);
+      if ($a->count() > 0) {
+        if ($a->update(["status_lock"=>"temporary"])) {
+          return response()->json(["status"=>1]);
+        }else {
+          return response()->json(["status"=>0]);
+        }
+      }else {
+        $d = $req->all();
+        $d["status_lock"] = "temporary";
+        $sp = ArsipLock::create($d);
+        if ($sp) {
+          return response()->json(["status"=>1]);
+        }else {
+          return response()->json(["status"=>0]);
+        }
+      }
+    }
+    public function lock_permanent(Request $req)
+    {
+      $a = ArsipLock::where(["kode_surat"=>$req->kode_surat]);
+      if ($a->count() > 0) {
+        if ($a->update(["status_lock"=>"permanent"])) {
+          return response()->json(["status"=>1]);
+        }else {
+          return response()->json(["status"=>0]);
+        }
+      }else {
+        $d = $req->all();
+        $d["status_lock"] = "permanent";
+        $sp = ArsipLock::create($d);
+        if ($sp) {
+          return response()->json(["status"=>1]);
+        }else {
+          return response()->json(["status"=>0]);
+        }
+      }
+
+    }
+    public function open_lock(Request $req)
+    {
+      $sa = ArsipLock::where(["kode_surat"=>$req->kode_surat]);
+      if ($sa->delete()) {
+        return response()->json(["status"=>1]);
+      }else {
+        return response()->json(["status"=>0]);
+      }
+    }
     public function suratkeluar_disposisi(Request $req)
     {
       $data = Arsip::where(["kode_surat"=>$req->id]);

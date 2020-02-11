@@ -15,9 +15,9 @@
         <div class="card-header">
           <h3 class="card-title">{{$title}}</h3>
         </div>
-        <div class="card-body">
+        <div class="card-body table-responsive">
           <a href="{{route("super.suratkeluar.add")}}" class="btn btn-primary mb-4">Tambah</a>
-          <table class="table table-responsive" id="dtable">
+          <table class="table " id="dtable">
             <thead>
               <th>No</th>
               <th>Kode</th>
@@ -44,12 +44,21 @@
 @section('js')
 <script type="text/javascript">
   $(document).ready(function() {
-    var btn = function(id){
+    var btn = function(id,status){
       var item = [];
+      $obj = $(status);
       item.push('<a class="dropdown-item detail" data-id="'+id+'" href="javascript:void(0)" >Detail Proses</a>');
       item.push('<a class="dropdown-item dword" data-id="'+id+'" href="javascript:void(0)" >Download WORD</a>');
       item.push('<a class="dropdown-item dpdf" data-id="'+id+'" href="javascript:void(0)" >Download PDF</a>');
-      item.push('<a class="dropdown-item pdisposisi" data-id="'+id+'" href="javascript:void(0)" >Proses Disposisi</a>');
+
+      if ($obj.text() == "Open") {
+        item.push('<a class="dropdown-item pdisposisi" data-id="'+id+'" href="javascript:void(0)" >Proses Disposisi</a>');
+        item.push('<a class="dropdown-item kunci_temporary" data-id="'+id+'" href="javascript:void(0)" >Kunci Temporary</a>');
+        item.push('<a class="dropdown-item kunci_permanent" data-id="'+id+'" href="javascript:void(0)" >Kunci Permanent</a>');
+      }else if ($obj.text() == "Kunci Sementara") {
+        item.push('<a class="dropdown-item buka_kunci" data-id="'+id+'" href="javascript:void(0)" >Buka Kunci</a>');
+        item.push('<a class="dropdown-item kunci_permanent" data-id="'+id+'" href="javascript:void(0)" >Kunci Permanent</a>');
+      }
       return '<button data-toggle="dropdown" type="button" class="btn btn-primary dropdown-toggle"></button><div class="dropdown-menu dropdown-menu-right">'+item.join("")+' </div>';
     };
     var dt = $("#dtable").DataTable({
@@ -57,7 +66,7 @@
       createdRow:function(r,d,i){
         $("td",r).eq(4).html(((d[4] != "")?"<span class='badge badge-success'>Ada</span>":"<span class='badge badge-danger'>Tidak Ada</span>"));
         $("td",r).eq(5).html(((d[5] != "")?"<span class='badge badge-success'>Ada</span>":"<span class='badge badge-danger'>Tidak Ada</span>"));
-        $("td",r).eq(10).html(btn(d[10]));
+        $("td",r).eq(10).html(btn(d[10],d[8]));
       }
     });
     $("#dtable").on("click", ".dword", function(event) {
@@ -65,7 +74,51 @@
       console.log(id);
       location.href = "{{route("super.suratkeluar.word.download")}}?id="+id;
     })
-
+    $("#dtable").on('click', '.kunci_temporary', function(event) {
+      event.preventDefault();
+      id = $(this).data("id");
+      c = confirm("Apakah Anda Yakin Akan Mengunci Arsip Sementara ?");
+      if (c) {
+        $.post('{{route("super.suratkeluar.lock_temp")}}',{kode_surat:id}, function(r) {
+          if (r.status == 1) {
+            toastr.success("Sukses Kunci Arsip");
+          }else {
+            toastr.error("Gagal Kunci Arsip");
+          }
+          dt.ajax.reload();
+        });
+      }
+    });
+    $("#dtable").on('click', '.kunci_permanent', function(event) {
+      event.preventDefault();
+      id = $(this).data("id");
+      c = confirm("Apakah Anda Yakin Akan Mengunci Arsip Permananen ? Perubahan Tidak Dapat Dilakukan Kembali ");
+      if (c) {
+        $.post('{{route("super.suratkeluar.lock_permanent")}}',{kode_surat:id}, function(r) {
+          if (r.status == 1) {
+            toastr.success("Sukses Kunci Arsip");
+          }else {
+            toastr.error("Gagal Kunci Arsip");
+          }
+          dt.ajax.reload();
+        });
+      }
+    });
+    $("#dtable").on('click', '.buka_kunci', function(event) {
+      event.preventDefault();
+      id = $(this).data("id");
+      c = confirm("Apakah Anda Yakin Akan Membuka Kunci Kembali ? ");
+      if (c) {
+        $.post('{{route("super.suratkeluar.open_lock")}}',{kode_surat:id}, function(r) {
+          if (r.status == 1) {
+            toastr.success("Sukses Buka Kunci Arsip");
+          }else {
+            toastr.error("Gagal Buka Kunci Arsip");
+          }
+          dt.ajax.reload();
+        });
+      }
+    });
     $("#dtable").on("click", ".dpdf", function(event) {
       id = $(this).data("id");
       console.log(id);
