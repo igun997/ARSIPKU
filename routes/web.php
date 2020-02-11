@@ -36,6 +36,9 @@ Route::group(['middleware' => ['staff_lain']], function () {
     Route::get("/staff/suratkeluar/detail/{id?}","StaffControl@suratkeluar_show")->name("staff.suratkeluar.update");
     Route::post("/staff/suratkeluar/detail/{id?}","StaffControl@suratkeluar_update")->name("staff.suratkeluar.update");
     Route::get("/staff/suratkeluar/delete/{id?}","StaffControl@suratkeluar_delete")->name("staff.suratkeluar.delete");
+
+    Route::get("/staff/konfirmasi/surat","StaffControl@konfirmasisurat_read")->name("staff.konfirmasi.surat");
+
 });
 Route::group(['middleware' => ['super_admin']], function () {
   Route::get("/super","SuperControl@index")->name("super");

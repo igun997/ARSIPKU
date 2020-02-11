@@ -95,13 +95,13 @@
 <li class="nav-item">
   <a href="{{route("staff.suratkeluar")}}" class="nav-link">
     <i class="nav-icon fas fa-file"></i>
-    <p>Arsip Keluar</p>
+    <p>Surat Keluar</p>
   </a>
 </li>
 <li class="nav-item">
-  <a href="{{route("staff.suratkeluar")}}" class="nav-link">
+  <a href="{{route("staff.konfirmasi.surat")}}" class="nav-link">
     <i class="nav-icon fas fa-file"></i>
-    <p>Arsip Di Tandatangani</p>
+    <p>Konfirmasi Surat</p>
   </a>
 </li>
 <li class="nav-item">
